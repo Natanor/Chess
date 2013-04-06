@@ -17,6 +17,7 @@ public class StartDisplay {
 	boolean lMouse;
 	Board board = new Board();
 	MouseStuff m = new MouseStuff(this);
+	int z =0;
 	
 	public void start(int width, int hight, String title){
 		try {
@@ -54,17 +55,34 @@ public class StartDisplay {
 		}else{
 			GL11.glColor3f(0.7f, 0.7f, 0.0f);
 		}
-		GL11.glPushMatrix();
-		GL11.glTranslatef(0, 0, 0);
-		GL11.glTranslatef(0, 0, 0);
-
-		GL11.glBegin(GL11.GL_QUADS);
-			GL11.glVertex2f((m.SelectedTile/10)*(width/8)+(width/8),(m.SelectedTile - (m.SelectedTile/10)*10) *(hight/8)+(hight/8));
-			GL11.glVertex2f((m.SelectedTile/10)*(width/8), (m.SelectedTile - (m.SelectedTile/10)*10) *(hight/8)+(hight/8));
-			GL11.glVertex2f((m.SelectedTile/10)*(width/8), (m.SelectedTile - (m.SelectedTile/10)*10) *(hight/8));
-			GL11.glVertex2f((m.SelectedTile/10)*(width/8)+(width/8),(m.SelectedTile - (m.SelectedTile/10)*10) *(hight/8));
-		GL11.glEnd();
-		GL11.glPopMatrix();
+		new RenderTileEffect(width,hight,m.SelectedTile);
+		if(m.SelectedTile > -0.5){
+			if(board.pieceAt[m.SelectedTile/10][m.SelectedTile - (m.SelectedTile/10)*10].piece != Piece.Empty){
+				if(board.pieceAt[m.SelectedTile/10][m.SelectedTile - (m.SelectedTile/10)*10].piece == Piece.PAWN){
+					new RenderMovesPawn(width,hight,m.SelectedTile,board);
+				}
+			}
+			/*if(board.pieceAt[(m.SelectedTile/10)][(m.SelectedTile - (m.SelectedTile/10)*10)].isWhite()){
+				z=1;
+			}else{
+				z=-1;
+			}
+			if(board.pieceAt[(m.SelectedTile/10)][(m.SelectedTile - (m.SelectedTile/10)*10)].piece == Piece.PAWN){
+				if(board.pieceAt[(m.SelectedTile/10)][((m.SelectedTile - (m.SelectedTile/10)*10))+z].piece == Piece.Empty){
+					if((m.SelectedTile - (m.SelectedTile/10)*10) == ((7+z)%7)){
+						GL11.glColor3f(0.2f, 0.5f, 0.7f);
+						new RenderTileEffect(width,hight, m.SelectedTile+z);
+						new RenderTileEffect(width,hight, m.SelectedTile+2*z,0.5f,0.6f,0.8f);
+					}
+					else{
+						GL11.glColor3f(0.2f, 0.5f, 0.7f);
+						new RenderTileEffect(width,hight, m.SelectedTile+z);
+					}
+				}
+				if(board.pieceAt[(m.SelectedTile/10])
+			}*/
+				
+		}
 		
 		
 	}
@@ -125,72 +143,6 @@ public class StartDisplay {
 	}
 
 	private void renderGLBoard() {
-		/*GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
-
-				GL11.glColor3f(0.4f, 0.4f, 0.4f);
-				for (int i =0; i < (width-1); i = i+(width/4) ){
-					for(int j = 0; j < (hight-1); j = j+(hight/4)){
-						GL11.glPushMatrix();
-							GL11.glTranslatef(0, 0, 0);
-					
-							GL11.glBegin(GL11.GL_QUADS);
-								GL11.glVertex2f(i+(width/8),j+(hight/8));
-								GL11.glVertex2f(i, j+(hight/8));
-								GL11.glVertex2f(i, j );
-								GL11.glVertex2f(i+(width/8),j );
-							GL11.glEnd();
-							GL11.glPopMatrix();
-					}
-				}
-				
-				GL11.glColor3f(0.4f, 0.4f, 0.4f);
-				for (int i =(width/8); i < (width-1); i = i+(width/4) ){
-					for(int j = (hight/8); j < (hight-1); j = j+(hight/4)){
-						GL11.glPushMatrix();
-							GL11.glTranslatef(0, 0, 0);
-							GL11.glTranslatef(0, 0, 0);
-					
-							GL11.glBegin(GL11.GL_QUADS);
-								GL11.glVertex2f(i+(width/8),j+(hight/8));
-								GL11.glVertex2f(i, j+(hight/8));
-								GL11.glVertex2f(i, j );
-								GL11.glVertex2f(i+(width/8),j );
-							GL11.glEnd();
-							GL11.glPopMatrix();
-					}
-				}
-				GL11.glColor3f(0.75f, 0.75f, 0.75f);
-				for (int i =(width/8); i < (width-1); i = i+(width/4) ){
-					for(int j = 0; j < (hight-1); j = j+(hight/4)){
-						GL11.glPushMatrix();
-							GL11.glTranslatef(0, 0, 0);
-					
-							GL11.glBegin(GL11.GL_QUADS);
-								GL11.glVertex2f(i+(width/8),j+(hight/8));
-								GL11.glVertex2f(i, j+(hight/8));
-								GL11.glVertex2f(i, j );
-								GL11.glVertex2f(i+(width/8),j );
-							GL11.glEnd();
-							GL11.glPopMatrix();
-					}
-				}
-				
-				GL11.glColor3f(0.75f, 0.75f, 0.75f);
-				for (int i =0; i < (width-1); i = i+(width/4) ){
-					for(int j = (hight/8); j < (hight-1); j = j+(hight/4)){
-						GL11.glPushMatrix();
-							GL11.glTranslatef(0, 0, 0);
-							GL11.glTranslatef(0, 0, 0);
-					
-							GL11.glBegin(GL11.GL_QUADS);
-								GL11.glVertex2f(i+(width/8),j+(hight/8));
-								GL11.glVertex2f(i, j+(hight/8));
-								GL11.glVertex2f(i, j );
-								GL11.glVertex2f(i+(width/8),j );
-							GL11.glEnd();
-							GL11.glPopMatrix();
-					}
-				}*/
 				new RenderBoard(width,hight);
 		}
 		
