@@ -125,7 +125,7 @@ public class StartDisplay {
 	}
 
 	private void renderGLBoard() {
-				GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
+		/*GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
 				GL11.glColor3f(0.4f, 0.4f, 0.4f);
 				for (int i =0; i < (width-1); i = i+(width/4) ){
@@ -190,7 +190,8 @@ public class StartDisplay {
 							GL11.glEnd();
 							GL11.glPopMatrix();
 					}
-				}
+				}*/
+				new RenderBoard(width,hight);
 		}
 		
 	
