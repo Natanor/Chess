@@ -25,7 +25,7 @@ public class CalcMovesPawn {
 		}
 		if(board.pieceAt[sx][sy+z].piece==Piece.Empty){
 			a[0] = sx*10+sy+z;
-			if(sy == ((7+z)%7)){
+			if(sy == ((7+z)%7) && board.pieceAt[sx][sy+2*z].piece == Piece.Empty){
 				a[1] = sx*10 +sy+2*z;
 			}
 		}

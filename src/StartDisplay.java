@@ -117,13 +117,38 @@ public class StartDisplay {
 	}
 
 	private void chessUpdate() {
-		if(m.SelectedTile > -0.5f){	
-			if(board.pieceAt[m.SelectedTile/10][m.SelectedTile-(m.SelectedTile/10)*10].white == board.whiteTurn){
-			
+		if(m.SelectedTile > -0.5f && m.LastSelectedTile > -0.5f){	
+			if(board.pieceAt[m.LastSelectedTile/10][m.LastSelectedTile-(m.LastSelectedTile/10)*10].white == board.whiteTurn){
+				if(board.pieceAt[m.LastSelectedTile/10][m.LastSelectedTile - (m.LastSelectedTile/10)*10].piece == Piece.PAWN){
+					CalcMovesPawn mp = new CalcMovesPawn(m.LastSelectedTile,board);
+					int[] a = mp.GetMoves();
+					for(int i=0;i<a.length;i++){
+						if(a[i] == m.SelectedTile){
+							performMove(m.LastSelectedTile,m.SelectedTile,board);
+						}
+					}
+				}
 			}	
+			if(board.pieceAt[m.LastSelectedTile/10][m.LastSelectedTile - (m.LastSelectedTile/10)*10].piece == Piece.BISHOP){
+				CalcMovesBishop mb = new CalcMovesBishop(m.LastSelectedTile,board);
+				int[] a = mb.GetMoves();
+				for(int i=0;i<a.length;i++){
+					if(a[i] == m.SelectedTile){
+						performMove(m.LastSelectedTile,m.SelectedTile,board);
+					}
+				}
+			}
 		}
 		
 	}
+
+	private void performMove(int lastSelectedTile, int selectedTile,Board board) {
+		board.pieceAt[selectedTile/10][selectedTile - (selectedTile/10)*10].piece = board.pieceAt[lastSelectedTile/10][lastSelectedTile - (lastSelectedTile/10)*10].piece;
+		board.pieceAt[selectedTile/10][selectedTile - (selectedTile/10)*10].white = board.pieceAt[lastSelectedTile/10][lastSelectedTile - (lastSelectedTile/10)*10].white;
+		board.pieceAt[lastSelectedTile/10][lastSelectedTile - (lastSelectedTile/10)*10].piece = Piece.Empty;
+		board.whiteTurn = !board.whiteTurn;
+	}
+
 
 	private void renderGLBoard() {
 				new RenderBoard(width,hight);
