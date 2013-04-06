@@ -58,29 +58,8 @@ public class StartDisplay {
 		new RenderTileEffect(width,hight,m.SelectedTile);
 		if(m.SelectedTile > -0.5){
 			if(board.pieceAt[m.SelectedTile/10][m.SelectedTile - (m.SelectedTile/10)*10].piece != Piece.Empty){
-				if(board.pieceAt[m.SelectedTile/10][m.SelectedTile - (m.SelectedTile/10)*10].piece == Piece.PAWN){
-					new RenderMovesPawn(width,hight,m.SelectedTile,board);
-				}
+				new RenderMoves(width,hight,m.SelectedTile,board);
 			}
-			/*if(board.pieceAt[(m.SelectedTile/10)][(m.SelectedTile - (m.SelectedTile/10)*10)].isWhite()){
-				z=1;
-			}else{
-				z=-1;
-			}
-			if(board.pieceAt[(m.SelectedTile/10)][(m.SelectedTile - (m.SelectedTile/10)*10)].piece == Piece.PAWN){
-				if(board.pieceAt[(m.SelectedTile/10)][((m.SelectedTile - (m.SelectedTile/10)*10))+z].piece == Piece.Empty){
-					if((m.SelectedTile - (m.SelectedTile/10)*10) == ((7+z)%7)){
-						GL11.glColor3f(0.2f, 0.5f, 0.7f);
-						new RenderTileEffect(width,hight, m.SelectedTile+z);
-						new RenderTileEffect(width,hight, m.SelectedTile+2*z,0.5f,0.6f,0.8f);
-					}
-					else{
-						GL11.glColor3f(0.2f, 0.5f, 0.7f);
-						new RenderTileEffect(width,hight, m.SelectedTile+z);
-					}
-				}
-				if(board.pieceAt[(m.SelectedTile/10])
-			}*/
 				
 		}
 		
@@ -138,7 +117,11 @@ public class StartDisplay {
 	}
 
 	private void chessUpdate() {
-		
+		if(m.SelectedTile > -0.5f){	
+			if(board.pieceAt[m.SelectedTile/10][m.SelectedTile-(m.SelectedTile/10)*10].white == board.whiteTurn){
+			
+			}	
+		}
 		
 	}
 

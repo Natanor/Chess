@@ -1,6 +1,7 @@
 
 public class Board {
 	Piece[][] pieceAt= new Piece[8][8];
+	boolean whiteTurn;
 	Board(){
 		for(int i =0; i<8; i++){
 			for(int j =0; j<8;j++){
@@ -29,6 +30,8 @@ public class Board {
 		pieceAt[5][7] = new Piece(5,7,false,Piece.BISHOP);
 		pieceAt[6][7] = new Piece(6,7,false,Piece.KNIGHT);
 		pieceAt[7][7] = new Piece(7,7,false,Piece.ROOK);
+		
+		whiteTurn = true;
 	}
 
 }
