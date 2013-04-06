@@ -25,20 +25,6 @@ public class CalcMovesBishop  {
 				
 	}
 	int[] GetMoves(){
-		/*for(z =1; z>-2; z--){
-			for(int i = 1; i <9;i++){
-				if( (sx+(i)) >= 0 && (sx+(i))<=7 && (sy+(z*i)) >= 0 && (sy+(z*i))<=7){
-					if(board.pieceAt[sx+(i)][sy+(i*z)].piece==Piece.Empty){
-						a[25 +i*z] = (sx+i)*10 +(sy+(i*z));
-					}
-				}
-				if( (sx-(i)) >= 0 && (sx-(i))<=7 && (sy+(z*i)) >= 0 && (sy+(z*i))<=7){
-					if(board.pieceAt[sx-(i)][sy+(i*z)].piece==Piece.Empty){
-						a[75 +i*z] = (sx-i)*10 +(sy+(i*z));
-					}
-				}
-			}
-		}*/
 		for(zx =1; zx>-2; zx = zx-2){
 			for(zy =1; zy>-2; zy = zy-2){
 				while(!reachedBlock && (sx+(i*zx)) >= 0 && (sx+(i*zx))<=7 && (sy+(zy*i)) >= 0 && (sy+(zy*i))<=7 ){

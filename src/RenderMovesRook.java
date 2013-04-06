@@ -1,11 +1,11 @@
 
-public class RenderMovesQueen {
+public class RenderMovesRook {
 	
-	public RenderMovesQueen(int width, int hight, int selectedTile, Board board) {
-		CalcMovesQueen mq = new CalcMovesQueen(selectedTile,board);
-		int[] a = mq.GetMoves();
+	public RenderMovesRook(int width, int hight, int selectedTile, Board board) {
+		CalcMovesRook mr = new CalcMovesRook(selectedTile,board);
+		int[] a = mr.GetMoves();
 		if(board.pieceAt[selectedTile/10][selectedTile - (selectedTile/10)*10].white == board.whiteTurn){
-			for(int i=8; i<100;i++){
+			for(int i=4; i<100;i++){
 				if((a[i]/10 +a[i]) % 2 ==0){
 					new RenderTileEffect(width, hight, a[i], 0.3f, 0.5f, 0.8f);
 				}else{
@@ -13,7 +13,7 @@ public class RenderMovesQueen {
 				}
 				
 			}
-			for(int i=0; i<8;i++){
+			for(int i=0; i<4;i++){
 				if((a[i]/10 +a[i]) % 2 ==0){
 					new RenderTileEffect(width, hight, a[i], 0.8f, 0.5f, 0.3f);
 				}else{

@@ -5,7 +5,7 @@ public class RenderMoves {
 			new RenderMovesPawn(width, hight, selectedTile, board);
 		}
 		if(board.pieceAt[selectedTile/10][selectedTile - (selectedTile/10)*10].piece == Piece.ROOK){
-			new RenderMovesRock(width, hight, selectedTile, board);
+			new RenderMovesRook(width, hight, selectedTile, board);
 		}
 		if(board.pieceAt[selectedTile/10][selectedTile - (selectedTile/10)*10].piece == Piece.BISHOP){
 			new RenderMovesBishop(width, hight, selectedTile, board);
