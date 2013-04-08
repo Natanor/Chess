@@ -156,6 +156,24 @@ public class StartDisplay {
 						}
 					}
 				}
+				if(board.pieceAt[m.LastSelectedTile/10][m.LastSelectedTile - (m.LastSelectedTile/10)*10].piece == Piece.KING){
+					CalcMovesKing mk = new CalcMovesKing(m.LastSelectedTile,board);
+					int[] a = mk.GetMoves();
+					for(int i=0;i<a.length;i++){
+						if(a[i] == m.SelectedTile){
+							performMove(m.LastSelectedTile,m.SelectedTile,board);
+						}
+					}
+				}
+				if(board.pieceAt[m.LastSelectedTile/10][m.LastSelectedTile - (m.LastSelectedTile/10)*10].piece == Piece.KNIGHT){
+					CalcMovesKnight mkn = new CalcMovesKnight(m.LastSelectedTile,board);
+					int[] a = mkn.GetMoves();
+					for(int i=0;i<a.length;i++){
+						if(a[i] == m.SelectedTile){
+							performMove(m.LastSelectedTile,m.SelectedTile,board);
+						}
+					}
+				}
 			}
 		}
 		
