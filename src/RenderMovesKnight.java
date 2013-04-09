@@ -5,7 +5,7 @@ public class RenderMovesKnight {
 		CalcMovesKnight mkn = new CalcMovesKnight(selectedTile,board);
 		int[] a = mkn.GetMoves();
 		if(board.pieceAt[selectedTile/10][selectedTile - (selectedTile/10)*10].white == board.whiteTurn){
-			for(int i=8; i<20;i++){
+			for(int i=8; i<50;i++){
 				if((a[i]/10 +a[i]) % 2 ==0){
 					new RenderTileEffect(width, hight, a[i], 0.3f, 0.5f, 0.8f);
 				}else{

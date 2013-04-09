@@ -2,6 +2,13 @@
 public class Board {
 	Piece[][] pieceAt= new Piece[8][8];
 	boolean whiteTurn;
+	
+	int[] a;
+	
+	boolean canCastleWR;
+	boolean canCastleWL;
+	boolean canCastleBR;
+	boolean canCastleBL;
 	Board(){
 		for(int i =0; i<8; i++){
 			for(int j =0; j<8;j++){
@@ -32,6 +39,33 @@ public class Board {
 		pieceAt[7][7] = new Piece(7,7,false,Piece.ROOK);
 		
 		whiteTurn = true;
+		
+		canCastleWR = true;
+		canCastleWL = true;
+		canCastleBR = true;
+		canCastleBL = true;
 	}
-
+	
+	boolean isTileInDangerTo(boolean white, int Tile){
+		boolean foundDanger = false;
+		if(pieceAt[Tile/10][Tile-(Tile/10)*10].piece == Piece.Empty){
+				for(int i =0; i<8;i++){
+					for(int j =0; j<8;j++){
+						if(white != pieceAt[i][j].white){
+							CalcMoves cm = new CalcMoves(i*10 + j,this);
+							a = cm.CalcDanger();
+							if(a != null){
+								for(int k =0; k<50; k++){
+									if(a[k] == Tile){
+										foundDanger = true;
+									}
+								}
+							}
+						}
+					}
+					
+				}
+		}
+		return foundDanger;
+	}
 }

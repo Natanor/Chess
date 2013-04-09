@@ -5,7 +5,7 @@ public class RenderMovesQueen {
 		CalcMovesQueen mq = new CalcMovesQueen(selectedTile,board);
 		int[] a = mq.GetMoves();
 		if(board.pieceAt[selectedTile/10][selectedTile - (selectedTile/10)*10].white == board.whiteTurn){
-			for(int i=8; i<100;i++){
+			for(int i=8; i<50;i++){
 				if((a[i]/10 +a[i]) % 2 ==0){
 					new RenderTileEffect(width, hight, a[i], 0.3f, 0.5f, 0.8f);
 				}else{

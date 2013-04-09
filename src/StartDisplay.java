@@ -62,8 +62,6 @@ public class StartDisplay {
 			}
 				
 		}
-		
-		
 	}
 
 
@@ -144,6 +142,18 @@ public class StartDisplay {
 					for(int i=0;i<a.length;i++){
 						if(a[i] == m.SelectedTile){
 							performMove(m.LastSelectedTile,m.SelectedTile,board);
+							if(m.SelectedTile == 00){
+								board.canCastleWL = false;
+							}
+							if(m.SelectedTile == 70){
+								board.canCastleWR = false;
+							}
+							if(m.SelectedTile == 07){
+								board.canCastleBL = false;
+							}
+							if(m.SelectedTile == 77){
+								board.canCastleBR = false;
+							}
 						}
 					}
 				}
@@ -159,10 +169,34 @@ public class StartDisplay {
 				if(board.pieceAt[m.LastSelectedTile/10][m.LastSelectedTile - (m.LastSelectedTile/10)*10].piece == Piece.KING){
 					CalcMovesKing mk = new CalcMovesKing(m.LastSelectedTile,board);
 					int[] a = mk.GetMoves();
-					for(int i=0;i<a.length;i++){
+					for(int i=0;i<45;i++){
 						if(a[i] == m.SelectedTile){
 							performMove(m.LastSelectedTile,m.SelectedTile,board);
+							if(m.SelectedTile == 40){
+								board.canCastleWL =false;
+								board.canCastleWR = false;
+							}
+							if(m.SelectedTile == 47){
+								board.canCastleBL = false;
+								board.canCastleBR = false;
+							}
 						}
+					}
+					if(a[48] == 27){
+						performMove(47,27,board);
+						performMove(07,37,board);
+					}
+					if(a[48] == 20){
+						performMove(40,20,board);
+						performMove(00,30,board);
+					}
+					if(a[49] == 67){
+						performMove(47,67,board);
+						performMove(77,57,board);
+					}
+					if(a[49] == 60){
+						performMove(40,60,board);
+						performMove(70,50,board);
 					}
 				}
 				if(board.pieceAt[m.LastSelectedTile/10][m.LastSelectedTile - (m.LastSelectedTile/10)*10].piece == Piece.KNIGHT){
@@ -175,9 +209,9 @@ public class StartDisplay {
 					}
 				}
 			}
+			}
 		}
 		
-	}
 
 	private void performMove(int lastSelectedTile, int selectedTile,Board board) {
 		board.pieceAt[selectedTile/10][selectedTile - (selectedTile/10)*10].piece = board.pieceAt[lastSelectedTile/10][lastSelectedTile - (lastSelectedTile/10)*10].piece;
@@ -189,6 +223,13 @@ public class StartDisplay {
 
 	private void renderGLBoard() {
 				new RenderBoard(width,hight);
+				for(int i = 0; i <8; i++){
+					for(int j = 0;j<8;j++){
+						if(board.isTileInDangerTo(board.whiteTurn, i*10 + j)){
+							new RenderTileEffect(width, hight, (i*10 + j), 0.5f, 0.1f, 0.1f);
+						}
+					}
+				}
 		}
 		
 	

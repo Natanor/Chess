@@ -3,7 +3,7 @@ public class CalcMovesBishop  {
 
 	int sx;
 	int sy;
-	int[] a = new int[100];
+	int[] a = new int[50];
 	boolean white;
 	Board board;
 	int zy;
@@ -18,7 +18,7 @@ public class CalcMovesBishop  {
 		sy = SelectedTile - sx*10;
 		white =board1.pieceAt[sx][sy].white;
 		board = board1;
-		for(int i=0;i<100;i++){
+		for(int i=0;i<50;i++){
 			a[i] = -1;
 		}
 		

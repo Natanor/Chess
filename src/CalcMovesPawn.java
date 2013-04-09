@@ -2,7 +2,7 @@
 public class CalcMovesPawn {
 	int sx;
 	int sy;
-	int[] a = new int[4];
+	int[] a = new int[50];
 	boolean white;
 	Board board;
 	int z;
@@ -12,7 +12,7 @@ public class CalcMovesPawn {
 		sy = SelectedTile - sx*10;
 		white =board1.pieceAt[sx][sy].white;
 		board = board1;
-		for(int i=0;i<4;i++){
+		for(int i=0;i<50;i++){
 			a[i] = -1;
 		}
 				

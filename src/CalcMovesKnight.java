@@ -3,7 +3,7 @@ public class CalcMovesKnight  {
 
 	int sx;
 	int sy;
-	int[] a = new int[20];
+	int[] a = new int[50];
 	boolean white;
 	Board board;
 	int moves = 8;
@@ -14,7 +14,7 @@ public class CalcMovesKnight  {
 		sy = SelectedTile - sx*10;
 		white =board1.pieceAt[sx][sy].white;
 		board = board1;
-		for(int i=0;i<20;i++){
+		for(int i=0;i<50;i++){
 			a[i] = -1;
 		}
 		
