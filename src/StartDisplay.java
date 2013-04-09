@@ -18,6 +18,8 @@ public class StartDisplay {
 	Board board = new Board();
 	MouseStuff m = new MouseStuff(this);
 	int z =0;
+	boolean selectedPieceForPawnReplacment = false;
+	int pawnPlaceForReplacment;
 	
 	public void start(int width, int hight, String title){
 		try {
@@ -133,6 +135,23 @@ public class StartDisplay {
 					for(int i=0;i<a.length;i++){
 						if(a[i] == m.SelectedTile){
 							performMove(m.LastSelectedTile,m.SelectedTile,board);
+							int w;
+							if(board.pieceAt[m.SelectedTile/10][m.SelectedTile - (m.SelectedTile/10)*10].white){
+								w = 7;
+							}else{
+								w = 0;
+							}
+							if(m.SelectedTile - (m.SelectedTile/10)*10 == w){
+								pawnPlaceForReplacment =m.SelectedTile;
+								selectedPieceForPawnReplacment = false;
+								while(!Display.isCloseRequested() && !selectedPieceForPawnReplacment){
+									displayUpdate();
+									userUpdate();
+									renderPawnSelection();
+									checkPawnSelection();
+									Display.update();
+								}
+							}
 						}
 					}
 				}
@@ -222,6 +241,48 @@ public class StartDisplay {
 			}
 		}
 		
+
+	private void checkPawnSelection() {
+		if(m.SelectedTile == 22){
+			board.pieceAt[pawnPlaceForReplacment/10][pawnPlaceForReplacment-(pawnPlaceForReplacment/10)*10].piece = Piece.BISHOP;
+			selectedPieceForPawnReplacment =true;
+		}
+		if(m.SelectedTile == 25){
+			board.pieceAt[pawnPlaceForReplacment/10][pawnPlaceForReplacment-(pawnPlaceForReplacment/10)*10].piece = Piece.ROOK;
+			selectedPieceForPawnReplacment =true;
+		}
+		if(m.SelectedTile == 52){
+			board.pieceAt[pawnPlaceForReplacment/10][pawnPlaceForReplacment-(pawnPlaceForReplacment/10)*10].piece = Piece.KNIGHT;
+			selectedPieceForPawnReplacment =true;
+		}
+		if(m.SelectedTile == 55){
+			board.pieceAt[pawnPlaceForReplacment/10][pawnPlaceForReplacment-(pawnPlaceForReplacment/10)*10].piece = Piece.QUEEN;
+			selectedPieceForPawnReplacment =true;
+		}
+		
+	}
+
+
+	private void renderPawnSelection() {
+		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
+		
+		new RenderTileEffect(width, hight, 25, 0.4f, 0.4f, 0.4f);
+		new RenderTileEffect(width, hight, 22, 0.4f, 0.4f, 0.4f);
+		new RenderTileEffect(width, hight, 52, 0.4f, 0.4f, 0.4f);
+		new RenderTileEffect(width, hight, 55, 0.4f, 0.4f, 0.4f);
+		
+		if(!board.whiteTurn){
+			GL11.glColor3f(1f, 1f, 1f);
+		}else{
+			GL11.glColor3f(0f, 0f, 0f);
+		}
+		new RenderQueen(width, hight, 5, 5);
+		new RenderRook(width, hight, 2, 5);
+		new RenderKnight(width, hight, 5, 2);
+		new RenderBishop(width, hight, 2, 2);
+		
+	}
+
 
 	private void performMove(int lastSelectedTile, int selectedTile,Board board) {
 		board.pieceAt[selectedTile/10][selectedTile - (selectedTile/10)*10].piece = board.pieceAt[lastSelectedTile/10][lastSelectedTile - (lastSelectedTile/10)*10].piece;
