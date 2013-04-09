@@ -40,7 +40,7 @@ public class CalcMoves {
 		return a;
 	}
 	int[] CalcDanger(){
-		if(board.pieceAt[tile/10][tile - (tile/10)*10].piece != Piece.Empty){
+		//if(board.pieceAt[tile/10][tile - (tile/10)*10].piece != Piece.Empty){
 		
 			if(board.pieceAt[tile/10][tile - (tile/10)*10].piece == Piece.PAWN){
 				int z;
@@ -89,7 +89,7 @@ public class CalcMoves {
 					}
 				}	
 				
-			}
+		//	}
 		return a;
 	}
 }

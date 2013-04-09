@@ -48,7 +48,6 @@ public class Board {
 	
 	boolean isTileInDangerTo(boolean white, int Tile){
 		boolean foundDanger = false;
-		if(pieceAt[Tile/10][Tile-(Tile/10)*10].piece == Piece.Empty){
 				for(int i =0; i<8;i++){
 					for(int j =0; j<8;j++){
 						if(white != pieceAt[i][j].white){
@@ -65,7 +64,6 @@ public class Board {
 					}
 					
 				}
-		}
 		return foundDanger;
 	}
 }

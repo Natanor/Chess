@@ -62,6 +62,16 @@ public class StartDisplay {
 			}
 				
 		}
+		for(int i = 0; i <8; i++){
+			for(int j = 0;j<8;j++){
+				if(board.pieceAt[i][j].piece == Piece.KING){
+					if(board.isTileInDangerTo(board.whiteTurn, i*10 + j)){
+						new RenderTileEffect(width, hight, (i*10 + j), 0.5f, 0.1f, 0.1f);
+					}
+				}
+			}
+		}
+		
 	}
 
 
@@ -223,13 +233,13 @@ public class StartDisplay {
 
 	private void renderGLBoard() {
 				new RenderBoard(width,hight);
-				for(int i = 0; i <8; i++){
+				/*for(int i = 0; i <8; i++){
 					for(int j = 0;j<8;j++){
 						if(board.isTileInDangerTo(board.whiteTurn, i*10 + j)){
 							new RenderTileEffect(width, hight, (i*10 + j), 0.5f, 0.1f, 0.1f);
 						}
 					}
-				}
+				}*/
 		}
 		
 	
