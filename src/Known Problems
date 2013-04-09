@@ -1,0 +1,8 @@
+The reason the king can eat protected enemys is becouse 
+I decide if a piece protected if a diiffrent colored piece can get there
+and pieces of the same part can't step on each other
+
+The king can 'protect' itself when checking possiable moves
+QEEE		E-empty Q - Queen K - King P -posiable acording to the program
+EKPE
+EPPE <---- the secend p here is the problem

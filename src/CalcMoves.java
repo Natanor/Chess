@@ -10,7 +10,6 @@ public class CalcMoves {
 			board = board1;
 	}
 	int[] Calc(){
-		if(board.pieceAt[tile/10][tile - (tile/10)*10].piece != Piece.Empty){
 		
 			if(board.pieceAt[tile/10][tile - (tile/10)*10].piece == Piece.PAWN){
 				CalcMovesPawn cmp = new CalcMovesPawn(tile, board);
@@ -36,7 +35,6 @@ public class CalcMoves {
 				CalcMovesKing cmk = new CalcMovesKing(tile, board);
 				a = cmk.GetMoves();
 			}
-		}
 		return a;
 	}
 	int[] CalcDanger(){

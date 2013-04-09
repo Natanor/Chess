@@ -66,7 +66,7 @@ public class StartDisplay {
 		}
 		for(int i = 0; i <8; i++){
 			for(int j = 0;j<8;j++){
-				if(board.pieceAt[i][j].piece == Piece.KING){
+				if(board.pieceAt[i][j].piece == Piece.KING && board.pieceAt[i][j].white == board.whiteTurn){
 					if(board.isTileInDangerTo(board.whiteTurn, i*10 + j)){
 						new RenderTileEffect(width, hight, (i*10 + j), 0.5f, 0.1f, 0.1f);
 					}

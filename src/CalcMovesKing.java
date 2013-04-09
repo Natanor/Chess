@@ -28,13 +28,13 @@ public class CalcMovesKing  {
 						a[moves]= (sx+i)*10 + (sy+j);
 						moves++;
 					}else{
-						if(board.pieceAt[sx+i][sy+j].white!=white && !board.isTileInDangerTo(white, (sx+i)*10+(sy+j))){
+					if(board.pieceAt[sx+i][sy+j].white!=white && !board.isTileInDangerTo(white, (sx+i)*10+(sy+j))){
 							a[attacks]= (sx+i)*10 + (sy+j);
 							attacks++;
-						}
 					}
 				}
 			}
+		}
 		if(sx == 4 && sy == 0 && white == true){
 			if(	   board.canCastleWL 
 					&& board.pieceAt[3][0].piece == Piece.Empty
