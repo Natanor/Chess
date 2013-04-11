@@ -18,7 +18,7 @@ public class StartDisplay {
 	Board board = new Board();
 	MouseStuff m = new MouseStuff(this);
 	int z =0;
-	boolean selectedPieceForPawnReplacment = false;
+	boolean selectedPieceForPawnReplacment = true;
 	int pawnPlaceForReplacment;
 	
 	public void start(int width, int hight, String title){
@@ -37,13 +37,21 @@ public class StartDisplay {
 		
 	
 		while (!Display.isCloseRequested()) {
-			renderGLBoard();
-			displayUpdate();
-			userUpdate();
-			renderGLEffect();
-			chessUpdate();
-			renderGLPieces();
-			Display.update();
+			if(!selectedPieceForPawnReplacment){
+				displayUpdate();
+				userUpdate();
+				renderPawnSelection();
+				checkPawnSelection();
+				Display.update();
+			}else{
+				renderGLBoard();
+				displayUpdate();
+				userUpdate();
+				renderGLEffect();
+				chessUpdate();
+				renderGLPieces();
+				Display.update();
+			}
 		}
 		Mouse.destroy();
 		Display.destroy();
@@ -144,13 +152,13 @@ public class StartDisplay {
 							if(m.SelectedTile - (m.SelectedTile/10)*10 == w){
 								pawnPlaceForReplacment =m.SelectedTile;
 								selectedPieceForPawnReplacment = false;
-								while(!Display.isCloseRequested() && !selectedPieceForPawnReplacment){
+								/*while(!Display.isCloseRequested() && !selectedPieceForPawnReplacment){
 									displayUpdate();
 									userUpdate();
 									renderPawnSelection();
 									checkPawnSelection();
 									Display.update();
-								}
+								}*/
 							}
 						}
 					}
