@@ -1,5 +1,5 @@
 
-public class CalcMovesKnight  {
+public class CalcMovesKnight extends CalcMoves {
 
 	int sx;
 	int sy;
@@ -25,6 +25,45 @@ public class CalcMovesKnight  {
 			for(int j = -1; j<2; j=j+2){
 				if((sx+i) >=0 && (sx+i)<=7 && (sy+j*2) >=0 && (sy+j*2)<=7){
 					if(board.pieceAt[sx+i][sy+j*2].piece == Piece.Empty){
+						if(isMoveLegit(sx*10 + sy, (sx+i)*10 + (sy+j*2), board)){
+							a[moves]= (sx+i)*10 + (sy+j*2);
+							moves++;
+						}
+					}else{
+						if(board.pieceAt[sx+i][sy+j*2].white!=white){
+							if(isMoveLegit(sx*10 + sy, (sx+i)*10 + (sy+j*2), board)){
+								a[attacks]= (sx+i)*10 + (sy+j*2);
+								attacks++;
+							}
+						}
+					}
+					
+				}
+				if((sx+i*2) >=0 && (sx+i*2)<=7 && (sy+j) >=0 && (sy+j)<=7){
+					if(board.pieceAt[sx+i*2][sy+j].piece == Piece.Empty){
+						if(isMoveLegit(sx*10 + sy,(sx+i*2)*10 + (sy+j), board)){
+							a[moves]= (sx+i*2)*10 + (sy+j);
+							moves++;
+						}
+					}else{
+						if(board.pieceAt[sx+i*2][sy+j].white!=white){
+							if(isMoveLegit(sx*10 + sy,(sx+i*2)*10 + (sy+j), board)){
+								a[attacks]= (sx+i*2)*10 + (sy+j);
+								attacks++;
+							}
+						}
+					}
+				}
+			}
+		}
+		return a;
+				
+	}
+	int[] GetMoves2(){
+		for(int i = -1; i<2;i=i+2){
+			for(int j = -1; j<2; j=j+2){
+				if((sx+i) >=0 && (sx+i)<=7 && (sy+j*2) >=0 && (sy+j*2)<=7){
+					if(board.pieceAt[sx+i][sy+j*2].piece == Piece.Empty){
 						a[moves]= (sx+i)*10 + (sy+j*2);
 						moves++;
 					}else{
@@ -37,12 +76,12 @@ public class CalcMovesKnight  {
 				}
 				if((sx+i*2) >=0 && (sx+i*2)<=7 && (sy+j) >=0 && (sy+j)<=7){
 					if(board.pieceAt[sx+i*2][sy+j].piece == Piece.Empty){
-						a[moves]= (sx+i*2)*10 + (sy+j);
-						moves++;
+							a[moves]= (sx+i*2)*10 + (sy+j);
+							moves++;
 					}else{
 						if(board.pieceAt[sx+i*2][sy+j].white!=white){
-							a[attacks]= (sx+i*2)*10 + (sy+j);
-							attacks++;
+								a[attacks]= (sx+i*2)*10 + (sy+j);
+								attacks++;
 						}
 					}
 				}

@@ -3,7 +3,7 @@ public class Board {
 	Piece[][] pieceAt= new Piece[8][8];
 	boolean whiteTurn;
 	
-	int[] a;
+	//int[] a;
 	
 	boolean canCastleWR;
 	boolean canCastleWL;
@@ -46,24 +46,47 @@ public class Board {
 		canCastleBL = true;
 	}
 	
-	boolean isTileInDangerTo(boolean white, int Tile){
+	boolean isPieceInDanger(int tile, Board board){
 		boolean foundDanger = false;
 				for(int i =0; i<8;i++){
 					for(int j =0; j<8;j++){
-						if(white != pieceAt[i][j].white){
-							CalcMoves cm = new CalcMoves(i*10 + j,this);
-							a = cm.CalcDanger();
-							if(a != null){
-								for(int k =0; k<50; k++){
-									if(a[k] == Tile){
-										foundDanger = true;
-									}
+						if(board.pieceAt[i][j].white != board.pieceAt[tile/10][tile - (tile/10*10)].white && !foundDanger){
+							int[] g = new int[50];
+							if(board.pieceAt[i][j].piece == Piece.PAWN){
+								CalcMovesPawn cmp = new CalcMovesPawn(i*10+j, board);
+								g =cmp.GetMoves2();
+							}
+							if(board.pieceAt[i][j].piece == Piece.ROOK){
+								CalcMovesRook cmr = new CalcMovesRook(i*10+j, board);
+								g =cmr.GetMoves2();
+							}
+							if(board.pieceAt[i][j].piece == Piece.BISHOP){
+								CalcMovesBishop cmb = new CalcMovesBishop(i*10+j, board);
+								g =cmb.GetMoves2();
+							}
+							if(board.pieceAt[i][j].piece == Piece.KNIGHT){
+								CalcMovesKnight cmkn = new CalcMovesKnight(i*10+j, board);
+								g =cmkn.GetMoves2();
+							}
+							if(board.pieceAt[i][j].piece == Piece.QUEEN){
+								CalcMovesQueen cmq = new CalcMovesQueen(i*10+j, board);
+								g =cmq.GetMoves2();
+							}
+							if(board.pieceAt[i][j].piece == Piece.KING){
+								CalcMovesKing cmk = new CalcMovesKing(i*10+j, board);
+								g =cmk.GetMoves2();
+							}
+							for(int h=0;h<50;h++){
+								if(g[h] == tile){
+									foundDanger = true;
 								}
 							}
+								
 						}
 					}
 					
 				}
 		return foundDanger;
 	}
+	
 }

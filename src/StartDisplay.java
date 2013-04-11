@@ -67,7 +67,7 @@ public class StartDisplay {
 		for(int i = 0; i <8; i++){
 			for(int j = 0;j<8;j++){
 				if(board.pieceAt[i][j].piece == Piece.KING && board.pieceAt[i][j].white == board.whiteTurn){
-					if(board.isTileInDangerTo(board.whiteTurn, i*10 + j)){
+					if(board.isPieceInDanger( i*10 + j, board)){
 						new RenderTileEffect(width, hight, (i*10 + j), 0.5f, 0.1f, 0.1f);
 					}
 				}
@@ -211,19 +211,19 @@ public class StartDisplay {
 							}
 						}
 					}
-					if(a[48] == 27){
+					if(a[48] == 27 && m.SelectedTile == 27){
 						performMove(47,27,board);
 						performMove(07,37,board);
 					}
-					if(a[48] == 20){
+					if(a[48] == 20 && m.SelectedTile == 20){
 						performMove(40,20,board);
 						performMove(00,30,board);
 					}
-					if(a[49] == 67){
+					if(a[49] == 67 && m.SelectedTile == 67){
 						performMove(47,67,board);
 						performMove(77,57,board);
 					}
-					if(a[49] == 60){
+					if(a[49] == 60 && m.SelectedTile == 60){
 						performMove(40,60,board);
 						performMove(70,50,board);
 					}

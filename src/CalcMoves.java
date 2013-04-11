@@ -1,4 +1,47 @@
+public class CalcMoves {
+	
+	boolean isMoveLegit(int whereFrom,int whereTo,Board inboard){
+		Board board = new Board();
+		board.canCastleBL = inboard.canCastleBL;
+		board.canCastleBR = inboard.canCastleBR;
+		board.canCastleWL = inboard.canCastleWL;
+		board.canCastleWR = inboard.canCastleWR;
+		board.whiteTurn = inboard.whiteTurn;
+		for(int i = 0; i<8;i++){
+			for(int j=0; j<8;j++){
+				board.pieceAt[i][j].piece = inboard.pieceAt[i][j].piece;
+				board.pieceAt[i][j].white = inboard.pieceAt[i][j].white;
+				board.pieceAt[i][j].x = inboard.pieceAt[i][j].x;
+				board.pieceAt[i][j].y = inboard.pieceAt[i][j].y;
+			}
+		}
+		boolean legit = false;
+		performMove(whereFrom, whereTo, board);
+		for(int i = 0; i<8; i++){
+			for(int j = 0; j<8; j++){
+				if(board.pieceAt[i][j].piece == Piece.KING && board.pieceAt[i][j].white != board.whiteTurn){
+					if(!board.isPieceInDanger(i*10+j,board)){
+						legit = true;
+					}
+				}
+			}
+		}
+		
+		return legit;
+	}
+	
+	private void performMove(int lastSelectedTile, int selectedTile,Board board) {
+		board.pieceAt[selectedTile/10][selectedTile - (selectedTile/10)*10].piece = board.pieceAt[lastSelectedTile/10][lastSelectedTile - (lastSelectedTile/10)*10].piece;
+		board.pieceAt[selectedTile/10][selectedTile - (selectedTile/10)*10].white = board.pieceAt[lastSelectedTile/10][lastSelectedTile - (lastSelectedTile/10)*10].white;
+		board.pieceAt[lastSelectedTile/10][lastSelectedTile - (lastSelectedTile/10)*10].piece = Piece.Empty;
+		board.whiteTurn = !board.whiteTurn;
+	}
+	
+	
+}
 
+
+/*
 
 
 public class CalcMoves {
@@ -92,4 +135,4 @@ public class CalcMoves {
 	}
 }
 			
-
+*/

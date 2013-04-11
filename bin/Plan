@@ -1,0 +1,5 @@
+choose piece
+calcpiece
+preform in test board
+check if in check on test board
+if last line is false add the move to possiable moves

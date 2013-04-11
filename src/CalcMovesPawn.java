@@ -1,5 +1,5 @@
 
-public class CalcMovesPawn {
+public class CalcMovesPawn extends CalcMoves{
 	int sx;
 	int sy;
 	int[] a = new int[50];
@@ -24,22 +24,60 @@ public class CalcMovesPawn {
 			z=-1;
 		}
 		if(board.pieceAt[sx][sy+z].piece==Piece.Empty){
-			a[0] = sx*10+sy+z;
+			if(isMoveLegit(sx*10 + sy,sx*10+sy+z, board)){
+				a[0] = sx*10+sy+z;
+			}
 			if(sy == ((7+z)%7) && board.pieceAt[sx][sy+2*z].piece == Piece.Empty){
-				a[1] = sx*10 +sy+2*z;
+				if(isMoveLegit(sx*10 + sy, sx*10 +sy+2*z, board)){
+					a[1] = sx*10 +sy+2*z;
+				}
 			}
 		}
 		if(sx != 0){
 			if(board.pieceAt[sx-1][sy+z].white != white && board.pieceAt[sx-1][sy+z].piece != Piece.Empty){
-				a[2] = (sx-1)*10 + (sy+z);
+				if(isMoveLegit(sx*10 + sy, (sx-1)*10 + (sy+z), board)){
+					a[2] = (sx-1)*10 + (sy+z);
+				}
 			}
 		}
 		if(sx != 7){
 			if(board.pieceAt[sx+1][sy+z].white != white && board.pieceAt[sx+1][sy+z].piece != Piece.Empty){
-				a[3] = (sx+1)*10 + (sy+z);
+				if(isMoveLegit(sx*10 + sy, (sx+1)*10 + (sy+z), board)){
+					a[3] = (sx+1)*10 + (sy+z);
+				}
 			}
 		}
 		
+		return a;
+				
+	}
+	int[] GetMoves2(){
+		if (white){
+			z=1;
+		}else{
+			z=-1;
+		}
+		if(sy+z >= 0 && sy+z <=7){
+			if(board.pieceAt[sx][sy+z].piece==Piece.Empty){
+				a[0] = sx*10+sy+z;
+				if(sy == ((7+z)%7)){
+					if(board.pieceAt[sx][sy+2*z].piece == Piece.Empty){
+						a[1] = sx*10 +sy+2*z;
+					}
+				}
+			}
+		
+			if(sx != 0){
+				if(board.pieceAt[sx-1][sy+z].white != white && board.pieceAt[sx-1][sy+z].piece != Piece.Empty){
+					a[2] = (sx-1)*10 + (sy+z);
+				}
+			}
+			if(sx != 7){
+				if(board.pieceAt[sx+1][sy+z].white != white && board.pieceAt[sx+1][sy+z].piece != Piece.Empty){
+					a[3] = (sx+1)*10 + (sy+z);
+				}
+			}
+		}
 		return a;
 				
 	}
