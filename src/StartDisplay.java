@@ -23,7 +23,7 @@ public class StartDisplay {
 	
 	public void start(int width, int hight, String title){
 		try {
-			Display.setDisplayMode(new DisplayMode(width, hight));
+			Display.setDisplayMode(new DisplayMode(Display.getDesktopDisplayMode().getWidth() -15,Display.getDesktopDisplayMode().getWidth() -10));
 			Display.create();
 			Display.setTitle(title);
 			Display.setResizable(true);
@@ -33,8 +33,13 @@ public class StartDisplay {
 			e.printStackTrace();
 			System.exit(0);
 		}
-		initGL(width, hight); 
-		
+		initGL(Display.getDesktopDisplayMode().getWidth()-15, Display.getDesktopDisplayMode().getHeight()-10); 
+		try {
+			Display.setDisplayMode(new DisplayMode(width,hight));
+		} catch (LWJGLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	
 		while (!Display.isCloseRequested()) {
 			if(!selectedPieceForPawnReplacment){
