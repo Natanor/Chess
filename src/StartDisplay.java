@@ -131,8 +131,8 @@ public class StartDisplay {
 	}
 
 	private void displayUpdate() {
-		width = Display.getWidth();
-		hight = Display.getHeight();
+		width = (Display.getWidth()/8)*8;
+		hight = (Display.getHeight()/8)*8;
 		mx = Mouse.getX();
 		my = Mouse.getY();
 		lMouse = Mouse.isButtonDown(0);
