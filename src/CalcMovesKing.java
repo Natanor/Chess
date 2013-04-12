@@ -57,6 +57,9 @@ public class CalcMovesKing extends CalcMoves {
 			if(	   board.canCastleWL 
 					&& board.pieceAt[3][0].piece == Piece.Empty
 					&& board.pieceAt[2][0].piece == Piece.Empty
+					&& board.pieceAt[1][0].piece == Piece.Empty
+					&& board.pieceAt[0][0].piece == Piece.ROOK
+					&& board.pieceAt[0][0].white == true
 					&& isMoveLegit(40, 30, board)
 					&& isMoveLegit(40, 20, board)){
 				a[48] = 20;
@@ -64,6 +67,8 @@ public class CalcMovesKing extends CalcMoves {
 			if(	   board.canCastleWR 
 				&& board.pieceAt[5][0].piece == Piece.Empty
 				&& board.pieceAt[6][0].piece == Piece.Empty
+				&& board.pieceAt[7][0].piece == Piece.ROOK
+				&& board.pieceAt[7][0].white == true
 				&& isMoveLegit(40, 50, board)
 				&& isMoveLegit(40, 60, board)){
 				a[49] = 60;
@@ -73,6 +78,9 @@ public class CalcMovesKing extends CalcMoves {
 			if(	   board.canCastleBL 
 					&& board.pieceAt[3][7].piece == Piece.Empty
 					&& board.pieceAt[2][7].piece == Piece.Empty
+					&& board.pieceAt[1][7].piece == Piece.Empty
+					&& board.pieceAt[0][7].piece == Piece.ROOK
+					&& board.pieceAt[0][7].white == false
 					&& isMoveLegit(47, 37, board)
 					&& isMoveLegit(47, 27, board)){
 				a[48] = 27;
@@ -80,6 +88,8 @@ public class CalcMovesKing extends CalcMoves {
 			if(	   board.canCastleBR 
 				&& board.pieceAt[5][7].piece == Piece.Empty
 				&& board.pieceAt[6][7].piece == Piece.Empty
+				&& board.pieceAt[7][7].piece == Piece.ROOK
+				&& board.pieceAt[7][7].white == false
 				&& isMoveLegit(47, 57, board)
 				&& isMoveLegit(47, 67, board)){
 				a[49] = 67;
