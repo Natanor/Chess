@@ -222,18 +222,22 @@ public class StartDisplay {
 					if(a[48] == 27 && m.SelectedTile == 27){
 						performMove(47,27,board);
 						performMove(07,37,board);
+						board.whiteTurn = !board.whiteTurn;
 					}
 					if(a[48] == 20 && m.SelectedTile == 20){
 						performMove(40,20,board);
 						performMove(00,30,board);
+						board.whiteTurn = !board.whiteTurn;
 					}
 					if(a[49] == 67 && m.SelectedTile == 67){
 						performMove(47,67,board);
 						performMove(77,57,board);
+						board.whiteTurn = !board.whiteTurn;
 					}
 					if(a[49] == 60 && m.SelectedTile == 60){
 						performMove(40,60,board);
 						performMove(70,50,board);
+						board.whiteTurn = !board.whiteTurn;
 					}
 				}
 				if(board.pieceAt[m.LastSelectedTile/10][m.LastSelectedTile - (m.LastSelectedTile/10)*10].piece == Piece.KNIGHT){
