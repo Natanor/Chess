@@ -1,4 +1,10 @@
 
+/**
+ * Written by Natanel Ficher
+ * April 2013
+ */
+
+
 public class RenderMovesPawn {
 
 	public RenderMovesPawn(int width, int hight, int selectedTile, Board board) {

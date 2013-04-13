@@ -1,4 +1,9 @@
 
+/**
+ * Written by Natanel Ficher
+ * April 2013
+ */
+
 public class RenderMoves {
 	public RenderMoves(int width, int hight, int selectedTile, Board board) {
 		if(board.pieceAt[selectedTile/10][selectedTile - (selectedTile/10)*10].piece == Piece.PAWN){

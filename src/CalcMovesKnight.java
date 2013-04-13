@@ -1,4 +1,9 @@
 
+/**
+ * Written by Natanel Ficher
+ * April 2013
+ */
+
 public class CalcMovesKnight extends CalcMoves {
 
 	int sx;

@@ -1,4 +1,9 @@
 
+/**
+ * Written by Natanel Ficher
+ * April 2013
+ */
+
 public class CalcMovesRook extends CalcMoves {
 
 	int sx;

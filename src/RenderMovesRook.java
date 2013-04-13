@@ -1,4 +1,10 @@
 
+/**
+ * Written by Natanel Ficher
+ * April 2013
+ */
+
+
 public class RenderMovesRook {
 	
 	public RenderMovesRook(int width, int hight, int selectedTile, Board board) {

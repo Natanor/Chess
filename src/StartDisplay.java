@@ -1,3 +1,9 @@
+
+/**
+ * Written by Natanel Ficher
+ * April 2013
+ */
+
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
@@ -21,7 +27,7 @@ public class StartDisplay {
 	boolean selectedPieceForPawnReplacment = true;
 	int pawnPlaceForReplacment;
 	
-	public void start(int width, int hight, String title){
+	public void start(String title){
 		try {
 			Display.setDisplayMode(new DisplayMode(Display.getDesktopDisplayMode().getWidth() -15,Display.getDesktopDisplayMode().getWidth() -10));
 			Display.create();

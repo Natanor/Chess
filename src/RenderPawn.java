@@ -1,4 +1,10 @@
 
+/**
+ * Written by Natanel Ficher
+ * April 2013
+ */
+
+
 import org.lwjgl.opengl.GL11;
 
 

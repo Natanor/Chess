@@ -1,4 +1,10 @@
 
+/**
+ * Written by Natanel Ficher
+ * April 2013
+ */
+
+
 public class Board {
 	Piece[][] pieceAt= new Piece[8][8];
 	boolean whiteTurn;

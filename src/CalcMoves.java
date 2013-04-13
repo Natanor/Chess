@@ -1,3 +1,9 @@
+
+/**
+ * Written by Natanel Ficher
+ * April 2013
+ */
+
 public class CalcMoves {
 	
 	boolean isMoveLegit(int whereFrom,int whereTo,Board inboard){

@@ -1,4 +1,9 @@
 
+/**
+ * Written by Natanel Ficher
+ * April 2013
+ */
+
 public class Piece {
 	final static int Empty = 0;
 	final static int PAWN =1 ;

@@ -1,4 +1,11 @@
 
+/**
+ * Written by Natanel Ficher
+ * April 2013
+ * 
+ * Chess using LWJGL
+ */
+
 public class Main {
 
 	/**
@@ -6,7 +13,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		StartDisplay a = new StartDisplay();
-		a.start(800, 800, "Chess");
+		a.start("Chess by Natanel Ficher - April 2013");
 		
 			
 		}
