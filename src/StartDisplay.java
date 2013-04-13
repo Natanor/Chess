@@ -34,13 +34,19 @@ public class StartDisplay {
 			System.exit(0);
 		}
 		initGL(Display.getDesktopDisplayMode().getWidth()-15, Display.getDesktopDisplayMode().getHeight()-10); 
-		if(width < Display.getWidth() && hight < Display.getHeight()){
+		/*if(width < Display.getWidth() && hight < Display.getHeight()){
 			try {
 				Display.setDisplayMode(new DisplayMode(width,hight));
 			} catch (LWJGLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}*/
+		try {
+			Display.setDisplayMode(new DisplayMode((Display.getDesktopDisplayMode().getHeight())/2, (Display.getDesktopDisplayMode().getHeight())/2));
+		} catch (LWJGLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	
 		while (!Display.isCloseRequested()) {
