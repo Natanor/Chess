@@ -147,7 +147,7 @@ public class StartDisplay {
 				if(board.pieceAt[m.LastSelectedTile/10][m.LastSelectedTile - (m.LastSelectedTile/10)*10].piece == Piece.PAWN){
 					CalcMovesPawn mp = new CalcMovesPawn(m.LastSelectedTile,board);
 					int[] a = mp.GetMoves();
-					for(int i=0;i<a.length;i++){
+					for(int i=0;i<6;i++){
 						if(a[i] == m.SelectedTile){
 							performMove(m.LastSelectedTile,m.SelectedTile,board);
 							int w;
@@ -166,6 +166,18 @@ public class StartDisplay {
 									checkPawnSelection();
 									Display.update();
 								}*/
+							}
+						}
+					}
+					for(int i=7; i<12;i++){
+						if(a[i] == m.SelectedTile){
+							performMove(m.LastSelectedTile,m.SelectedTile,board);
+							if(m.SelectedTile - (m.SelectedTile/10)*10 == 5){
+								board.pieceAt[m.SelectedTile/10][(m.SelectedTile-(m.SelectedTile/10)*10)-1].piece  = Piece.Empty;
+							}else if(m.SelectedTile - (m.SelectedTile/10)*10 == 2){
+								board.pieceAt[m.SelectedTile][m.SelectedTile+1].piece  = Piece.Empty;
+							}else{
+								System.out.println("error when trying to preform al-pesant!");
 							}
 						}
 					}
@@ -307,6 +319,8 @@ public class StartDisplay {
 		board.pieceAt[selectedTile/10][selectedTile - (selectedTile/10)*10].piece = board.pieceAt[lastSelectedTile/10][lastSelectedTile - (lastSelectedTile/10)*10].piece;
 		board.pieceAt[selectedTile/10][selectedTile - (selectedTile/10)*10].white = board.pieceAt[lastSelectedTile/10][lastSelectedTile - (lastSelectedTile/10)*10].white;
 		board.pieceAt[lastSelectedTile/10][lastSelectedTile - (lastSelectedTile/10)*10].piece = Piece.Empty;
+		board.lastMoveFrom = lastSelectedTile;
+		board.lastMoveTo = selectedTile;
 		board.whiteTurn = !board.whiteTurn;
 	}
 

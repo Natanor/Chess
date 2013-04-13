@@ -13,7 +13,7 @@ public class RenderMovesPawn {
 				}
 				
 			}
-			for(int i=2; i<4;i++){
+			for(int i=2; i<50;i++){
 				if((a[i]/10 +a[i]) % 2 ==0){
 					new RenderTileEffect(width, hight, a[i], 0.8f, 0.5f, 0.3f);
 				}else{

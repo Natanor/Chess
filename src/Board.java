@@ -3,7 +3,8 @@ public class Board {
 	Piece[][] pieceAt= new Piece[8][8];
 	boolean whiteTurn;
 	
-	//int[] a;
+	int lastMoveFrom =-1;
+	int lastMoveTo = -1;
 	
 	boolean canCastleWR;
 	boolean canCastleWL;

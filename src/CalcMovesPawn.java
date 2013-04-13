@@ -47,7 +47,24 @@ public class CalcMovesPawn extends CalcMoves{
 				}
 			}
 		}
+		//---------------------------
+		for(int i = 1; i>-2; i=i-2){
+			if(sx+i >+0 && sx+i<=7){
+				if(board.pieceAt[sx+i][sy].piece == Piece.PAWN){
+					if(board.pieceAt[sx+i][sy].white != board.pieceAt[sx][sy].white){
+						if(board.lastMoveTo == ((sx+i)*10+sy)){
+							if(Math.abs(board.lastMoveFrom - board.lastMoveTo) > 1){
+								if(isMoveLegit(sx*10 + sy, (sx+i)*10 + (sy+z), board)){
+									a[10+i] = ((sx+i)*10 + sy+z);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 		
+		//--------------
 		return a;
 				
 	}
@@ -75,6 +92,19 @@ public class CalcMovesPawn extends CalcMoves{
 			if(sx != 7){
 				if(board.pieceAt[sx+1][sy+z].white != white && board.pieceAt[sx+1][sy+z].piece != Piece.Empty){
 					a[3] = (sx+1)*10 + (sy+z);
+				}
+			}
+			for(int i = 1; i>-2; i=i-2){
+				if(sx+i >+0 && sx+i<=7){
+					if(board.pieceAt[sx+i][sy].piece == Piece.PAWN){
+						if(board.pieceAt[sx+i][sy].white != board.pieceAt[sx][sy].white){
+							if(board.lastMoveTo == ((sx+i)*10+sy)){
+								if(Math.abs(board.lastMoveFrom - board.lastMoveTo) > 1){
+									a[10+i] = ((sx+i)*10 + sy+z);
+								}
+							}
+						}
+					}
 				}
 			}
 		}
