@@ -53,7 +53,7 @@ public class CalcMovesPawn extends CalcMoves{
 				if(board.pieceAt[sx+i][sy].piece == Piece.PAWN){
 					if(board.pieceAt[sx+i][sy].white != board.pieceAt[sx][sy].white){
 						if(board.lastMoveTo == ((sx+i)*10+sy)){
-							if(Math.abs(board.lastMoveFrom - board.lastMoveTo) > 1){
+							if( Math.abs(board.lastMoveFrom - board.lastMoveTo) == 2){
 								if(isMoveLegit(sx*10 + sy, (sx+i)*10 + (sy+z), board)){
 									a[10+i] = ((sx+i)*10 + sy+z);
 								}
