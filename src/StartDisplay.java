@@ -175,7 +175,7 @@ public class StartDisplay {
 							if(m.SelectedTile - (m.SelectedTile/10)*10 == 5){
 								board.pieceAt[m.SelectedTile/10][(m.SelectedTile-(m.SelectedTile/10)*10)-1].piece  = Piece.Empty;
 							}else if(m.SelectedTile - (m.SelectedTile/10)*10 == 2){
-								board.pieceAt[m.SelectedTile][m.SelectedTile+1].piece  = Piece.Empty;
+								board.pieceAt[m.SelectedTile/10][(m.SelectedTile-(m.SelectedTile/10)*10)+1].piece  = Piece.Empty;
 							}else{
 								System.out.println("error when trying to preform al-pesant!");
 							}
